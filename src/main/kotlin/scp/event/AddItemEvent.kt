@@ -1,6 +1,6 @@
 package scp.event
 
-import scp.model.Item
+import scp.model.item.ButtonItem
 import tornadofx.FXEvent
 
-class AddItemEvent(val item: Item): FXEvent()
+class AddItemEvent(): FXEvent()

@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleStringProperty
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
 import scp.event.AddItemEvent
-import scp.model.Item
+import scp.model.item.ButtonItem
 import tornadofx.*
 
 class AddItemView : View() {
@@ -43,7 +43,7 @@ class AddItemView : View() {
 
                 button("Save") {
                     action {
-                        fire(AddItemEvent(Item(name.value, value.value)))
+                        //fire(AddItemEvent())
                     }
                 }
 
