@@ -6,7 +6,11 @@ import java.io.FileWriter
 import javax.json.Json
 import javax.json.JsonObject
 
-class FileSystemService {
+class FileSystemService private constructor() {
+
+    private object HOLDER {
+        val INSTANCE = FileSystemService()
+    }
 
     fun createFileStructureOnStartup() {
         if (!File(DATA_FOLDER_PATH).exists()) {
@@ -15,10 +19,10 @@ class FileSystemService {
         }
     }
 
-    fun getJsonObjectFromDataFile() =
+    fun loadJsonObjectFromDataFile() =
         Json
             .createReader(FileReader(DATA_FILE_PATH))
-            .readObject()
+            .readObject()!!
 
     fun saveJsonObjectToFile(jsonObject: JsonObject) {
         val fileWriter = FileWriter(DATA_FILE_PATH)
@@ -31,6 +35,8 @@ class FileSystemService {
     }
 
     companion object {
+        val instance: FileSystemService by lazy { HOLDER.INSTANCE }
+
         const val DATA_FOLDER_PATH = "./data"
         const val DATA_FILE_NAME = "data.json"
         val DATA_FILE_PATH = "$DATA_FOLDER_PATH${File.separator}$DATA_FILE_NAME"

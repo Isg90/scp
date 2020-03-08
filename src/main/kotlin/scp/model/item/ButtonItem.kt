@@ -7,9 +7,9 @@ import tornadofx.JsonModel
 import tornadofx.string
 import javax.json.JsonObject
 
-class ButtonItem: JsonModel {
+class ButtonItem constructor(): JsonModel {
 
-    constructor(name: String, value: String) {
+    constructor(name: String, value: String) : this() {
         this.name = name
         this.value = value
     }
